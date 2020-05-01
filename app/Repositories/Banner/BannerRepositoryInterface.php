@@ -5,33 +5,33 @@ namespace App\Repositories;
 interface BannerRepositoryInterface
 {
     /**
-     * Get's a post by it's ID
+     * Get's a banner by it's ID
      *
      * @param int
      */
-    public function get($post_id);
+    public function get($id);
 
     /**
-     * Get's all posts.
+     * Get's all banners.
      *
      * @return mixed
      */
     public function all();
 
     /**
-     * Deletes a post.
+     * Deletes a banner.
      *
      * @param int
      */
-    public function delete($post_id);
+    public function delete($id);
 
     /**
-     * Updates a post.
+     * Updates a banner.
      *
      * @param int
      * @param array
      */
-    public function update($post_id, array $post_data);
+    public function update($id, array $data);
 }
 
 ?>
