@@ -1,12 +1,13 @@
 <?php 
 
-namespace App\Repositories;
+namespace App\Repositories\Banner;
+
 use App\BannerModel;
 
-class PostRepository implements PostRepositoryInterface
+class BannerRepository implements BannerRepositoryInterface
 {
     /**
-     * Get's a post by it's ID
+     * Get's a banner by it's ID
      *
      * @param int
      * @return collection
@@ -23,11 +24,13 @@ class PostRepository implements PostRepositoryInterface
      */
     public function all()
     {
+        dd(Banner::all());
         return BannerModel::all();
+        
     }
 
     /**
-     * Deletes a post.
+     * Deletes a banner.
      *
      * @param int
      */
@@ -37,7 +40,7 @@ class PostRepository implements PostRepositoryInterface
     }
 
     /**
-     * Updates a post.
+     * Updates a banner.
      *
      * @param int
      * @param array
