@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Banner;
 
+use App\Repositories\Banner\BannerRepositoryInterface;
 use App\BannerModel;
 
 class BannerRepository implements BannerRepositoryInterface
