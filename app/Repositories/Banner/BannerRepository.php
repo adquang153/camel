@@ -25,9 +25,7 @@ class BannerRepository implements BannerRepositoryInterface
      */
     public function all()
     {
-        dd(Banner::all());
         return BannerModel::all();
-        
     }
 
     /**
