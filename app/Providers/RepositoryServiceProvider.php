@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Banner\BannerRepositoryInterface;
+use App\Repositories\Banner\BannerRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(
-            App\Repositories\BannerRepositoryInterface::class,App\Repositories\BannerRepository::class
+            BannerRepositoryInterface::class, BannerRepository::class
         );
     }
 
