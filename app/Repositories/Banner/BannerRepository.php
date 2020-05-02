@@ -35,7 +35,7 @@ class BannerRepository implements BannerRepositoryInterface
      */
     public function delete($id)
     {
-        BannerModel::destroy($id);
+        return BannerModel::destroy($id);
     }
 
     /**
@@ -46,7 +46,7 @@ class BannerRepository implements BannerRepositoryInterface
      */
     public function update($id, array $data)
     {
-        BannerModel::find($id)->update($data);
+        return BannerModel::find($id)->update($data);
     }
 }
 
