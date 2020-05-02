@@ -27,8 +27,8 @@
     </section>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/all.min.js')}}"></script>
     @section('scripts')
     @show

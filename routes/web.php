@@ -18,11 +18,11 @@ Route::get('/', function () {
 });
 Route::group(['prefix' => '/admin'], function () {
     Route::resource('/products', 'ProductsController');
+    Route::resource('/product_type', 'ProductTypeController');
     Route::resource('/banner', 'BannerController');
     Route::resource('/feedback', 'FeedbackController');
     Route::resource('/images', 'ImagesController');
     Route::resource('/posts', 'ProductsController');
     Route::resource('/post_type', 'PostTypeController');
-    Route::resource('/product_type', 'ProductTypeController');
     Route::resource('/user', 'UserController');
 });

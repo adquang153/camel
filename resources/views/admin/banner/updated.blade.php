@@ -30,7 +30,7 @@
         </div>
         <div class="form-check">
             <input id="visible" class="form-check-input" type="checkbox" name="is_visible" value="true" {{$data->is_visible=='Y'?'checked':''}}>
-            <label for="visible" class="form-check-label" >is visible</label>
+            <label for="visible" class="form-check-label" >is_visible</label>
         </div>
         <button class="btn btn-success mt-3">Update</button>
     </form>

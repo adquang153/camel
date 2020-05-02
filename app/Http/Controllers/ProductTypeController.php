@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ProductTypeModel as ProductType;
+use App\Repositories\ProductType\ProductTypeRepositoryInterface;
+
 class ProductTypeController extends Controller
 {
+
+    protected $pro_type;
+    
+    public function __construct(ProductTypeRepositoryInterface $pro_type){
+        $this->pro_type = $pro_type;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class ProductTypeController extends Controller
     public function index()
     {
         //
-        return view('admin/product_type/index');
+        $data = $this->pro_type->all();
+        return view('admin/product_type/index',compact('data'));
     }
 
     /**
@@ -25,6 +35,7 @@ class ProductTypeController extends Controller
     public function create()
     {
         //
+        return view('admin/product_type/created');
     }
 
     /**
@@ -36,6 +47,15 @@ class ProductTypeController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title'=>'required|max:50',
+            'content'=>'required'
+        ]);
+        
+        $data = $this->pro_type->create($request->all());
+        if($data)
+            return redirect('admin/product_type')->with('success','Product Type Created!');
+        return redirect('admin/product_type')->with('success','Can\'t Product Type Created!');
     }
 
     /**
@@ -58,6 +78,8 @@ class ProductTypeController extends Controller
     public function edit($id)
     {
         //
+        $data = $this->pro_type->get($id);
+        return view('admin/product_type/updated',compact('data'));
     }
 
     /**
@@ -70,6 +92,15 @@ class ProductTypeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'title'=>'required|max:50',
+            'content'=>'required'
+        ]);
+        $result = $this->pro_type->update($id,$request->all());
+        if($result)
+            return redirect('admin/product_type')->with('Product Type Updated!');
+        return redirect('admin/product_type')->with('Can\'t Product Type Updated!');
+
     }
 
     /**
@@ -81,5 +112,9 @@ class ProductTypeController extends Controller
     public function destroy($id)
     {
         //
+        $result = $this->pro_type->delete($id);
+        if($result)
+            return redirect('admin/product_type')->with('success','Product Type Deleted!');
+        return redirect('admin/product_type')->with('success','Can\'t Product Type Deleted!');
     }
 }
