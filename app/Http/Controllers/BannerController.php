@@ -24,7 +24,6 @@ class BannerController extends Controller
     public function index()
     {
         //
-        // $data = Banner::all();
         $data = $this->banner->all();
         return view('admin/banner/index',compact('data'));
     }
@@ -52,15 +51,16 @@ class BannerController extends Controller
         $request->validate([
             'image_banner' => 'required',
         ]);
-        $path = $request->file('image_banner')->store('public/images/banner');
-        $data = Banner::create([
-            'title' => $request->title,
-            'image_banner' => Storage::url($path),
-            'path' => $path,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'is_visible' => $request->is_visible==true?'Y':'N',
-        ]);
+        // $path = $request->file('image_banner')->store('public/images/banner');
+        // $data = Banner::create([
+        //     'title' => $request->title,
+        //     'image_banner' => Storage::url($path),
+        //     'path' => $path,
+        //     'start_date' => $request->start_date,
+        //     'end_date' => $request->end_date,
+        //     'is_visible' => $request->is_visible==true?'Y':'N',
+        // ]);
+        $data = $this->banner->create($request->all());
         if($data)
             return redirect('admin/banner')->with('success','Banner Created!');
         return back()->with('error',"Can't Created!");
@@ -86,7 +86,8 @@ class BannerController extends Controller
     public function edit($id)
     {
         //
-        $data =  Banner::find($id);
+        // $data =  Banner::find($id);
+        $data = $this->banner->get($id);
         return view('admin/banner/updated',compact('data'));
     }
 
@@ -99,19 +100,11 @@ class BannerController extends Controller
      */
     public function update(BannerRequest $request, $id)
     {
-        $data =  Banner::find($id);
-        $path = $data->path;
-        if($request->image_banner){
-            Storage::delete($path);
-            $path = $request->file('image_banner')->store('public/images/banner');
+        $data = $this->banner->update($id,$request->all());
+        $success = 'Banner Updated!';
+        if(!$data){
+            $success = "Can't Updated!";
         }
-        $data->title = $request->title;
-        $data->image_banner = Storage::url($path);
-        $data->path = $path;
-        $data->start_date = $request->start_date;
-        $data->end_date = $request->end_date;
-        $data->is_visible = $request->is_visible==true?'Y':'N';
-        $data->save();
         return redirect('admin/banner')->with('success','Banner Updated!');
     }
 
@@ -124,9 +117,10 @@ class BannerController extends Controller
     public function destroy($id)
     {
         //
-        $data = Banner::find($id)->first();
-        Storage::delete($data->path);
-        $data->forceDelete();
-        return redirect('admin/banner')->with('success','Banner Deleted!');
+        $data = $this->banner->delete($id);
+        $success = "Banner Deleted!";
+        if(!$data)
+            $success = "Can't deleted!";
+        return redirect('admin/banner')->with('success',$success);
     }
 }

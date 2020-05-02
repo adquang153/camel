@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->longText('path')->nullable();
             $table->integer('price')->unsigned()->default(0);
             $table->integer('type')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('likes')->unsigned()->nullable()->default(0);
             $table->integer('comments')->unsigned()->nullable()->default(0);
             $table->string('is_visible', 1)->default('N');

@@ -19,6 +19,7 @@ class CreateUserTable extends Migration
             $table->text('password');
             $table->longText('avatar')->nullable();
             $table->longText('path')->nullable();
+            $table->string('nick_name', 50);
             $table->string('email', 50);
             $table->string('number_phone', 15);
             $table->string('address', 255)->nullable();

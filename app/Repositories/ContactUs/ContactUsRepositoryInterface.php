@@ -12,27 +12,27 @@ interface BannerRepositoryInterface
     public function get($id);
 
     /**
-     * Get's all banners.
+     * Get's all contacts.
      *
      * @return mixed
      */
     public function all();
 
     /**
-     * Create a banner
+     * Create a contact
      * return @mixed
      */
     public function create($data);
 
     /**
-     * Deletes a banner.
+     * Deletes a contact.
      *
      * @param int
      */
     public function delete($id);
 
     /**
-     * Updates a banner.
+     * Updates a contact.
      *
      * @param int
      * @param array
