@@ -17,7 +17,7 @@ class BannerController extends Controller
      */
     protected $banner;
 
-    public function __constructor(BannerRepositoryInterface $bannerRepository){
+    public function __construct(BannerRepositoryInterface $bannerRepository){
         $this->banner = $bannerRepository;
     }
 
