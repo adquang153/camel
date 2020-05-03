@@ -9,6 +9,10 @@ use App\Repositories\ProductType\ProductTypeRepositoryInterface;
 use App\Repositories\ProductType\ProductTypeRepository;
 use App\Repositories\Products\ProductsRepositoryInterface;
 use App\Repositories\Products\ProductsRepository;
+use App\Repositories\PostType\PostTypeRepositoryInterface;
+use App\Repositories\PostType\PostTypeRepository;
+use App\Repositories\Posts\PostsRepositoryInterface;
+use App\Repositories\Posts\PostsRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -28,6 +32,12 @@ class RepositoryServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             ProductsRepositoryInterface::class, ProductsRepository::class
+        );
+        $this->app->bind(
+            PostTypeRepositoryInterface::class, PostTypeRepository::class
+        );
+        $this->app->bind(
+            PostsRepositoryInterface::class, PostsRepository::class
         );
     }
 

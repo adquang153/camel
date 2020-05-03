@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @section('css')
     @show
   </head>

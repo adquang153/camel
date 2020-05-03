@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PostsModel as Posts;
+use App\Repositories\Posts\PostsRepositoryInterface;
+use App\Repositories\PostType\PostTypeRepositoryInterface;
+use App\Http\Requests\PostRequest;
 class PostsController extends Controller
 {
+
+    protected $post;
+    protected $postType;
+
+    public function __construct(PostsRepositoryInterface $post, PostTypeRepositoryInterface $postType){
+        $this->post = $post;
+        $this->postType = $postType;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,8 @@ class PostsController extends Controller
     public function index()
     {
         //
-        return view('admin/posts/index');
+        $data = $this->post->all();
+        return view('admin/posts/index',compact('data'));
     }
 
     /**
@@ -25,6 +37,8 @@ class PostsController extends Controller
     public function create()
     {
         //
+        $type = $this->postType->all();
+        return view('admin/posts/created',compact('type'));
     }
 
     /**
@@ -33,9 +47,14 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         //
+        $request->validate([
+            'image_post' => 'required',
+        ]);
+        $result = $this->post->create($request->all());
+        return redirect('admin/posts')->with('success',$result?'Post Created!':'Can\'t Created!');
     }
 
     /**
@@ -58,6 +77,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        $data = $this->post->get($id);
+        $type = $this->postType->all();
+        return view('admin/posts/updated',compact(['data','type']));
     }
 
     /**
@@ -67,9 +89,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         //
+        $result = $this->post->update($id, $request->all());
+        return redirect('admin/posts')->with('success',$result?'Post Updated!':'Can\'t Updated!');
     }
 
     /**
@@ -81,5 +105,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        $result = $this->post->delete($id);
+        return redirect('admin/posts')->with('success',$result?'Post Deleted!':'Can\'t Deleted!');
     }
 }

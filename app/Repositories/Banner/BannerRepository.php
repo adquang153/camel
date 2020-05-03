@@ -15,7 +15,7 @@ class BannerRepository implements BannerRepositoryInterface
 
     public function all()
     {
-        return BannerModel::all();
+        return BannerModel::orderBy('id','desc')->get();
     }
 
     public function create($data){

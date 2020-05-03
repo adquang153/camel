@@ -13,7 +13,7 @@ class ProductsRepository implements ProductsRepositoryInterface{
     }
 
     public function all(){
-        return Products::all();
+        return Products::orderBy('id','desc')->get();
     }
 
     public function create($data){
@@ -31,7 +31,7 @@ class ProductsRepository implements ProductsRepositoryInterface{
             $path = $result->path;
             if(isset($data['image_product'])){
                 Storage::delete($path);
-                $path = $data['image_product']->store('public/products');
+                $path = $data['image_product']->store('public/images/products');
             }
             $data['path'] = $path;
             $data['image_product'] = Storage::url($path);

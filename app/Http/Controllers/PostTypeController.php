@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PostsModel as Posts;
+use App\Repositories\PostType\PostTypeRepositoryInterface;
+
 class PostTypeController extends Controller
 {
+
+    protected $postType;
+
+    public function __construct(PostTypeRepositoryInterface $postType){
+        $this->postType = $postType;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,9 @@ class PostTypeController extends Controller
     public function index()
     {
         //
-        return view('admin/post_type/index');
+        $data = $this->postType->all();
+        
+        return view('admin/post_type/index',compact('data'));
     }
 
     /**
@@ -25,6 +35,7 @@ class PostTypeController extends Controller
     public function create()
     {
         //
+        return view('admin/post_type/created');
     }
 
     /**
@@ -36,6 +47,12 @@ class PostTypeController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required|max:100',
+            'content' => 'required'
+        ]);
+        $data  = $this->postType->create($request->all());
+        return redirect('admin/post_type')->with('success',$data?'Post Type Created!':'Can\'t Created');
     }
 
     /**
@@ -58,6 +75,8 @@ class PostTypeController extends Controller
     public function edit($id)
     {
         //
+        $data = $this->postType->get($id);
+        return view('admin/post_type/updated',compact('data'));
     }
 
     /**
@@ -70,6 +89,8 @@ class PostTypeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $this->postType->update($id, $request->all());
+        return redirect('admin/post_type')->with('success',$data?'Post Type Updated!':'Can\'t Updated!');
     }
 
     /**
@@ -81,5 +102,7 @@ class PostTypeController extends Controller
     public function destroy($id)
     {
         //
+        $result = $this->postType->delete($id);
+        return redirect('admin/post_type')->with('success',$result?'Post Type Deleted!':'Can\'t Deleted!');
     }
 }

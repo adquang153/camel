@@ -22,7 +22,7 @@ Route::group(['prefix' => '/admin'], function () {
     Route::resource('/banner', 'BannerController');
     Route::resource('/feedback', 'FeedbackController');
     Route::resource('/images', 'ImagesController');
-    Route::resource('/posts', 'ProductsController');
+    Route::resource('/posts', 'PostsController');
     Route::resource('/post_type', 'PostTypeController');
     Route::resource('/user', 'UserController');
 });
