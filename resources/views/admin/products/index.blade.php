@@ -38,7 +38,7 @@
                         <td>{{$product->type}}</td>
                         <td>{{$product->user_id}}</td>
                         <td>{{$product->is_visible}}</td>
-                        <td>
+                        <td class="action_mng">
                             <a href="{{route('products.edit',$product->id)}}"><i class="fa fa-edit"></i></a>
                             <form action="{{route('products.destroy',$product->id)}}" id="deleted" method="post" class="d-inline">
                                 @csrf

@@ -26,7 +26,7 @@
                         <td>{{$value->id}}</td>
                         <td>{{$value->title}}</td>
                         <td>{{$value->content}}</td>
-                        <td>
+                        <td class="action_mng">
                             <a href="{{route('product_type.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
                             <form action="{{route('product_type.destroy',$value->id)}}" id="deleted" method="post" class="d-inline">
                                 @csrf

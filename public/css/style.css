@@ -1,0 +1,44 @@
+@font-face{
+    font-family: Plex-Sans;
+    src: url('../font/IBMPlexSansCondensed-Regular.ttf');
+}
+@font-face{
+    font-family: Plex-Sans-Bold;
+    src: url('../font/IBMPlexSansCondensed-Bold.ttf');
+}
+body *{
+    font-family: Plex-Sans;
+}
+h1,h2,h3,h4,h5,h6,strong{
+    font-family: Plex-Sans-Bold;
+}
+.side_admin{
+    padding: 10px;
+    background: linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.9)), url('../images/camera1.jpg') center center no-repeat;
+    height: 100vh;
+}
+.side_admin > ul.list-unstyled li a{
+    display: block;
+    color: #b7cacc;
+    padding: 8px;    
+    margin: 3px 0;
+    border-radius: 3px;
+}
+.side_admin .side_title h4{
+    color: white;
+    padding: 8px;
+}
+.side_admin > ul.list-unstyled li a:hover,.side_admin > ul.list-unstyled li a.active{
+    text-decoration: none;
+    background: rgba(230, 226, 226, .3);
+    color: white;
+}
+.side_admin > ul.list-unstyled li a > span{
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+    margin-right: 5px;
+}
+.action_mng a{
+    color: red;
+}

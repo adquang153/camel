@@ -12,8 +12,8 @@ class ProductsRepository implements ProductsRepositoryInterface{
         return Products::find($id);
     }
 
-    public function all(){
-        return Products::orderBy('id','desc')->get();
+    public function all($where=[]){
+        return Products::where($where)->orderBy('id','desc')->get();
     }
 
     public function create($data){

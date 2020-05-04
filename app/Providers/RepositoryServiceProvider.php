@@ -13,6 +13,8 @@ use App\Repositories\PostType\PostTypeRepositoryInterface;
 use App\Repositories\PostType\PostTypeRepository;
 use App\Repositories\Posts\PostsRepositoryInterface;
 use App\Repositories\Posts\PostsRepository;
+use App\Repositories\Images\ImagesRepositoryInterface;
+use App\Repositories\Images\ImagesRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,9 @@ class RepositoryServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             PostsRepositoryInterface::class, PostsRepository::class
+        );
+        $this->app->bind(
+            ImagesRepositoryInterface::class, ImagesRepository::class
         );
     }
 

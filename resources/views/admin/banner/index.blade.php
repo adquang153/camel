@@ -34,7 +34,7 @@
                         <td>{{$banner->start_date}}</td>
                         <td>{{$banner->end_date}}</td>
                         <td>{{$banner->is_visible}}</td>
-                        <td>
+                        <td class="action_mng">
                             <a href="{{route('banner.edit',$banner->id)}}"><i class="fa fa-edit"></i></a>
                             <form action="{{route('banner.destroy',$banner->id)}}" id="deleted" method="post" class="d-inline">
                                 @csrf

@@ -16,10 +16,10 @@
     @include('admin/templates/header')
     <section class="content_admin">
       <div class="row w-100">
-          <div class="col-lg-3 col-md-4 col-xl-2">
+          <div class="col-lg-3 col-md-4 ">
             @include('admin/templates/sidebar')
           </div>
-          <div class="col-lg-9 col-md-8 col-xl-10">
+          <div class="col-lg-9 col-md-8">
               @section('content')
               @show
           </div>
@@ -29,6 +29,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/axios.min.js')}}"></script>
     <script src="{{asset('js/all.min.js')}}"></script>
     @section('scripts')
     @show

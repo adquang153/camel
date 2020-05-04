@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ImagesProductModel as ImagesProduct;
+use App\Repositories\Images\ImagesRepositoryInterface;
+use App\Repositories\Products\ProductsRepositoryInterface;
+
 class ImagesController extends Controller
 {
+    protected $images;
+    protected $products;
+
+    public function __construct(ImagesRepositoryInterface $images, ProductsRepositoryInterface $products){
+        $this->images = $images;
+        $this->products = $products;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class ImagesController extends Controller
     public function index()
     {
         //
-        return view('admin/images_product');
+        $data = $this->images->all();
+        return view('admin/images_product/index',compact('data'));
     }
 
     /**
@@ -25,6 +35,11 @@ class ImagesController extends Controller
     public function create()
     {
         //
+        $where = [
+            'is_visible' => 'Y',
+        ];
+        $products = $this->products->all($where);
+        return view('admin/images_product/created',compact('products'));
     }
 
     /**
@@ -36,6 +51,12 @@ class ImagesController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'images' => 'required',
+            'product_id' => 'required'
+        ]);
+        $result = $this->images->create($request->all());
+        return redirect('admin/images')->with('success',$result?'Image Product Created!':'Can\'t Created!');
     }
 
     /**
@@ -81,5 +102,7 @@ class ImagesController extends Controller
     public function destroy($id)
     {
         //
+        $result = $this->images->delete($id);
+        return redirect('admin/images')->with($result?'Image Deleted!':'Can\'t Image!');
     }
 }
