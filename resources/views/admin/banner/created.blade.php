@@ -10,7 +10,7 @@
         @csrf
         <div class="form-group">
           <label for="">Title</label>
-          <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="">
+          <input type="text" name="title" value="" class="form-control @error('title') is-invalid @enderror" placeholder="">
         </div>
         <div class="form-group">
           <label for="">Image</label>

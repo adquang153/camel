@@ -13,21 +13,21 @@ class CreateUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('user_name', 100);
-            $table->text('password');
-            $table->longText('avatar')->nullable();
-            $table->longText('path')->nullable();
-            $table->string('nick_name', 50);
-            $table->string('email', 50);
-            $table->string('number_phone', 15);
-            $table->string('address', 255)->nullable();
-            $table->string('type', 100)->default('customer');
-            $table->string('is_visible',1)->default('N');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        // Schema::create('user', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('user_name', 100);
+        //     $table->text('password');
+        //     $table->longText('avatar')->nullable();
+        //     $table->longText('path')->nullable();
+        //     $table->string('nick_name', 50);
+        //     $table->string('email', 50);
+        //     $table->string('number_phone', 15);
+        //     $table->string('address', 255)->nullable();
+        //     $table->string('type', 100)->default('customer');
+        //     $table->string('is_visible',1)->default('N');
+        //     $table->timestamps();
+        //     $table->softDeletes();
+        // });
     }
 
     /**
