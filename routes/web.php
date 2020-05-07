@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => '/admin'], function () {
+Route::group(['prefix' => '/admin','middleware'=>'auth'], function () {
     Route::resource('/products', 'ProductsController');
     Route::resource('/product_type', 'ProductTypeController');
     Route::resource('/banner', 'BannerController');
@@ -28,5 +27,5 @@ Route::group(['prefix' => '/admin'], function () {
 });
 
 Auth::routes();
-
+ 
 Route::get('/home', 'HomeController@index')->name('home');
