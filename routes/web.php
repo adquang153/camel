@@ -16,6 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix' => '/admin','middleware'=>'auth'], function () {
+    Route::get('/',function(){
+        return view ('admin.index');
+    })->name('admin');
     Route::resource('/products', 'ProductsController');
     Route::resource('/product_type', 'ProductTypeController');
     Route::resource('/banner', 'BannerController');

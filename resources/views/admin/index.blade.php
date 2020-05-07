@@ -3,5 +3,5 @@
 @section('title','Manager')
 
 @section('content')
-    <div>Test</div>
+    <div>Test</div>adad
 @endsection
