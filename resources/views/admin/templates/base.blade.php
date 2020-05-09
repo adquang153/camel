@@ -14,12 +14,15 @@
   </head>
   <body>
     @include('admin/templates/header')
+    
     <section class="content_admin">
+      
       <div class="row w-100">
           <div class="col-lg-3 col-md-4 ">
             @include('admin/templates/sidebar')
           </div>
           <div class="col-lg-9 col-md-8">
+          
               @section('content')
               @show
           </div>

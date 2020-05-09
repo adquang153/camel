@@ -44,4 +44,28 @@
             </a>
         </li>
     </ul>
+    <ul>
+    @php
+        function menu($menu){
+            if(gettype($menu) == 'array'){
+                foreach($menu as $men){
+                    //echo $child == '' ? '<li class="dropdown">' . $men['name'] : '<li>' . $men['name'];
+                    if(isset($men['items'])){
+                        echo '<li class="drop-head"><a href="javascript:void(0)"><span>';
+                        echo isset($men['icon']) ? '<i class="fa "'. $men['icon'] .'"></i>' : '';
+                        echo  '</span>'.$men['name'] . '</a>';
+                        echo '<ul class="dropdown">';
+                        menu($men['items']);
+                        echo '</ul></li>';
+                    }
+                    else{
+                      echo '<li><a href="'. route($men['route']) . '">' . $men['name'] . '</a></li>';
+                    }
+                    
+                }
+            }
+        }
+        menu(config('menu'));
+    @endphp
+    </ul>
 </div>

@@ -3,5 +3,6 @@
 @section('title','Manager')
 
 @section('content')
-    <div>Test</div>adad
+    <div>Test</div>
+    <div>Data: {{var_dump($data)}}</div>
 @endsection
