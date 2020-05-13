@@ -11,8 +11,11 @@ class ProductTypeRepository implements ProductTypeRepositoryInterface{
         return ProType::find($id);
     }
 
-    public function all(){
-        return ProType::all();
+    public function all($params = []){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return ProType::select($select)->get();
     }
 
     public function create($data){

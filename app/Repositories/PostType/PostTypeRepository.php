@@ -11,8 +11,11 @@ class PostTypeRepository implements PostTypeRepositoryInterface{
         return PostType::find($id);
     }
 
-    public function all(){
-        return PostType::orderBy('id','desc')->get();
+    public function all($params = []){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return PostType::select($select)->orderBy('id','desc')->get();
     }
 
     public function create($data){

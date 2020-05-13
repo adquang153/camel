@@ -11,7 +11,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="add"><a href="{{route('images.create')}}" class="btn btn-outline-dark">Add</a></div>
+    <div class="add"><a href="{{route('admin.images.create')}}" class="btn btn-outline-dark">Add</a></div>
     <table class="table table-light table-striped table-hover mt-4">
         <tbody>
             <tr>
@@ -29,7 +29,7 @@
                         </td>
                         <td>{{$img->product_id}}</td>
                         <td class="action_mng">
-                            <form action="{{route('images.destroy',$img->id)}}" id="deleted" method="post" class="d-inline">
+                            <form action="{{route('admin.images.destroy',$img->id)}}" id="deleted" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>

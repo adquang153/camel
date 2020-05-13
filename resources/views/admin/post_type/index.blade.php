@@ -11,7 +11,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="add"><a href="{{route('post_type.create')}}" class="btn btn-outline-dark">Add</a></div>
+    <div class="add"><a href="{{route('admin.post_type.create')}}" class="btn btn-outline-dark">Add</a></div>
     <table class="table table-light table-striped table-hover mt-4">
         <tbody>
             <tr>
@@ -27,8 +27,8 @@
                         <td>{{$value->title}}</td>
                         <td>{{$value->content}}</td>
                         <td class="action_mng">
-                            <a href="{{route('post_type.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('post_type.destroy',$value->id)}}" id="deleted" method="post" class="d-inline">
+                            <a href="{{route('admin.post_type.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
+                            <form action="{{route('admin.post_type.destroy',$value->id)}}" id="deleted" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>

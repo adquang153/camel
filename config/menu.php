@@ -3,35 +3,55 @@
 return [
     [
         'name' => 'Dashboard',
-        'icon' => '',
-        'route' => 'banner.index',
+        'icon' => 'fa fa-bars',
+        'route' => 'admin',
     ],
     [
-        'name' => 'Danh mục 1',
-        'icon' => 'fa-bimobject',
+        'name' => 'Banner',
+        'icon' => 'fab fa-bimobject',
+        'route' => 'admin.banner.index',
+    ],
+    [
+        'name' => 'Product',
+        'icon' => 'fab fa-product-hunt',
         'items' => [
             [
-                'name' => 'Danh sách 1',
-                'route' => 'banner.index',
+                'name' => 'Products',
+                'route' => 'admin.products.index',
             ],
             [
-                'name' => 'Danh sách 2',
-                'route' => 'banner.index',
+                'name' => 'Product Type',
+                'route' => 'admin.product_type.index',
             ],
         ],
     ],
     [
-        'name' => 'Danh mục 2',
-        'items' =>[
+        'name' => 'Post',
+        'icon' => 'fas fa-vote-yea',
+        'items' => [
             [
-                'name' => 'Danh sách 3',
-                'items' => [
-                    [
-                        'name' => 'Danh sách 3-4',
-                        'route' => 'banner.index',
-                    ],
-                ],
+                'name' => 'Posts',
+                'route' => 'admin.posts.index',
+            ],
+            [
+                'name' => 'Post Type',
+                'route' => 'admin.post_type.index',
             ],
         ],
+    ],
+    [
+        'name' => 'Images Product',
+        'icon' => 'far fa-images',
+        'route' => 'admin.images.index',
+    ],
+    [
+        'name' => 'Feedback',
+        'icon' => 'far fa-question-circle',
+        'route' => 'admin.feedback.index',
+    ],
+    [
+        'name' => 'Users',
+        'icon' => 'fas fa-user',
+        'route' => 'admin.user.index',
     ],
 ];

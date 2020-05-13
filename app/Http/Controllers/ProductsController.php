@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Repositories\Products\ProductsRepositoryInterface;
 use App\Repositories\ProductType\ProductTypeRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 
 class ProductsController extends Controller
 {
     protected $product;
     protected $pro_type;
+    protected $user;
 
-    public function __construct(ProductsRepositoryInterface $product, ProductTypeRepositoryInterface $pro_type){
+    public function __construct(ProductsRepositoryInterface $product, ProductTypeRepositoryInterface $pro_type, UserRepositoryInterface $user){
         $this->product = $product;
         $this->pro_type = $pro_type;
+        $this->user = $user;
     }
 
     /**
@@ -37,8 +40,16 @@ class ProductsController extends Controller
     public function create()
     {
         //
-        $type = $this->pro_type->all();
-        return view('admin/products/created', compact('type'));
+        $paramsPT = [
+            'select' => ['id','title'],
+        ];
+        $paramsUser = [
+            'select' => ['id','user_name','nick_name'],
+        ];
+        $user = $this->user->all($paramsUser);
+        $type = $this->pro_type->all($paramsPT);
+
+        return view('admin/products/created', compact('type','user'));
     }
 
     /**

@@ -12,8 +12,11 @@ class ImagesRepository implements ImagesRepositoryInterface{
         return Images::find($id);
     }
 
-    public function all($where=[]){
-        $data = Images::where($where)->orderBy('id','desc')->get();
+    public function all($params = [],$where=[]){
+        $data = Images::all();
+        if(isset($params['select']))
+            $data = Images::select($params['select']);
+        $data = $data->where($where)->orderBy('id','desc')->get();
         return $data;
     }
     

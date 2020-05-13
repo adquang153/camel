@@ -8,13 +8,17 @@ use App\BannerModel;
 
 class BannerRepository implements BannerRepositoryInterface
 {
-    public function get($id)
+    public function get($id, $params = [])
     {
+        if(isset($params['select']))
+            return BannerModel::select($params[])->find($id);
         return BannerModel::find($id);
     }
 
-    public function all()
+    public function all($params = [])
     {
+        if(isset($params['select']))
+            return BannerModel::select($params['select'])->orderBy('id','desc')->get();
         return BannerModel::orderBy('id','desc')->get();
     }
 

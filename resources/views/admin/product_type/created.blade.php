@@ -6,7 +6,7 @@
     <div class="title mt-4">
         <h3>Product Type Manager</h3>
     </div>
-    <form action="{{route('product_type.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.product_type.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="">Title</label>

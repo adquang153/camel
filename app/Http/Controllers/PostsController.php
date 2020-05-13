@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Posts\PostsRepositoryInterface;
 use App\Repositories\PostType\PostTypeRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 use App\Http\Requests\PostRequest;
 class PostsController extends Controller
 {
 
     protected $post;
     protected $postType;
+    protected $user;
 
-    public function __construct(PostsRepositoryInterface $post, PostTypeRepositoryInterface $postType){
+    public function __construct(PostsRepositoryInterface $post, PostTypeRepositoryInterface $postType, UserRepositoryInterface $user){
         $this->post = $post;
         $this->postType = $postType;
+        $this->user = $user;
     }
 
     /**
@@ -37,8 +40,15 @@ class PostsController extends Controller
     public function create()
     {
         //
-        $type = $this->postType->all();
-        return view('admin/posts/created',compact('type'));
+        $paramsPT = [
+            'select' => ['id','title'],
+        ];
+        $paramsUser = [
+            'select' => ['id','user_name','nick_name'],
+        ];
+        $type = $this->postType->all($paramsPT);
+        $user = $this->user->all($paramsUser);
+        return view('admin/posts/created',compact('type','user'));
     }
 
     /**

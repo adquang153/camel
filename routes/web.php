@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => '/admin','middleware'=>'auth'], function () {
+Route::group(['prefix' => '/admin','middleware'=>['auth','is_admin']], function () {
     Route::get('/', 'MyController@getConfig')->name('admin');
-    Route::resource('/products', 'ProductsController');
-    Route::resource('/product_type', 'ProductTypeController');
-    Route::resource('/banner', 'BannerController');
-    Route::resource('/feedback', 'FeedbackController');
-    Route::resource('/images', 'ImagesController');
-    Route::resource('/posts', 'PostsController');
-    Route::resource('/post_type', 'PostTypeController');
-    Route::resource('/user', 'UserController');
+    Route::resource('/products', 'ProductsController',['names' => 'admin.products']);
+    Route::resource('/product_type', 'ProductTypeController',['names' => 'admin.product_type']);
+    Route::resource('/banner', 'BannerController',['names' => 'admin.banner']);
+    Route::resource('/feedback', 'FeedbackController',['names' => 'admin.feedback']);
+    Route::resource('/images', 'ImagesController',['names' => 'admin.images']);
+    Route::resource('/posts', 'PostsController',['names' => 'admin.posts']);
+    Route::resource('/post_type', 'PostTypeController',['names' => 'admin.post_type']);
+    Route::resource('/user', 'UserController',['names' => 'admin.user']);
 });
 
 Auth::routes();

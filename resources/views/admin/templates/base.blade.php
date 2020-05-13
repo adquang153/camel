@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @section('css')
     @show
@@ -22,7 +23,6 @@
             @include('admin/templates/sidebar')
           </div>
           <div class="col-lg-9 col-md-8">
-          
               @section('content')
               @show
           </div>
@@ -34,6 +34,8 @@
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/axios.min.js')}}"></script>
     <script src="{{asset('js/all.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="{{asset('js/font-awesome-kit.js')}}"></script>
     @section('scripts')
     @show
   </body>

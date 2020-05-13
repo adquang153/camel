@@ -6,7 +6,7 @@
     <div class="title mt-4">
         <h3>Product Manager</h3>
     </div>
-    <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="">Title</label>
@@ -31,8 +31,15 @@
                 <option value="{{$val->id}}">{{$val->title}}</option>
             @endforeach
           </select>
-        <input type="text" name="user_id" value="1">
-
+        </div>
+        <div class="form-group">
+          <label for="">User</label>
+          <!-- <input type="text" name="user_id" value="1"> -->
+          <select name="user_id" id="" class="form-control">
+            @foreach($user as $us)
+              <option value="$us->id">{{$us->id . ' - ' . $us->user_name}}</option>
+            @endforeach
+          </select>
         </div>
         <div class="form-check">
             <input id="visible" class="form-check-input" type="checkbox" name="is_visible" value="true">

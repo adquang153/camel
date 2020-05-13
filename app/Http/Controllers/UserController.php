@@ -4,8 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserModel as User;
+use App\Repositories\User\UserRepositoryInterface;
+
 class UserController extends Controller
 {
+    protected $user;
+    public function __construct(UserRepositoryInterface $user){
+        $this->user = $user;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +21,11 @@ class UserController extends Controller
     public function index()
     {
         //
+        $params = [
+            'select' => ['id','user_name','password','nick_name','avatar','email','number_phone','address','created_at','updated_at'],
+        ];
+        $data = $this->user->all($params);
+        return view('admin/user/index',compact('data'));
     }
 
     /**

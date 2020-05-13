@@ -6,7 +6,7 @@
     <div class="title mt-4">
         <h3>Image Manager</h3>
     </div>
-    <form action="{{route('images.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.images.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="">Product ID</label>

@@ -23,7 +23,10 @@ class ImagesController extends Controller
     public function index()
     {
         //
-        $data = $this->images->all();
+        $params = [
+            'select' => ['id','image','created_at','updated_at'],
+        ];
+        $data = $this->images->all($params);
         return view('admin/images_product/index',compact('data'));
     }
 

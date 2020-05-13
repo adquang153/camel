@@ -11,7 +11,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="add"><a href="{{route('banner.create')}}" class="btn btn-outline-dark">Add</a></div>
+    <div class="add"><a href="{{route('admin.banner.create')}}" class="btn btn-outline-dark">Add</a></div>
     <table class="table table-light table-striped table-hover mt-4">
         <tbody>
             <tr>
@@ -35,8 +35,8 @@
                         <td>{{$banner->end_date}}</td>
                         <td>{{$banner->is_visible}}</td>
                         <td class="action_mng">
-                            <a href="{{route('banner.edit',$banner->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('banner.destroy',$banner->id)}}" id="deleted" method="post" class="d-inline">
+                            <a href="{{route('admin.banner.edit',$banner->id)}}"><i class="fa fa-edit"></i></a>
+                            <form action="{{route('admin.banner.destroy',$banner->id)}}" id="deleted" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>

@@ -6,7 +6,7 @@
     <div class="title mt-4">
         <h3>Banner Manager</h3>
     </div>
-    <form action="{{route('banner.update',$data->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.banner.update',$data->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="form-group">

@@ -24,7 +24,10 @@ class BannerController extends Controller
     public function index()
     {
         //
-        $data = $this->banner->all();
+        $params = [
+            'select' => ['id','title','image_banner','start_date','end_date','is_visible','created_at','updated_at'],
+        ];
+        $data = $this->banner->all($params);
         return view('admin/banner/index',compact('data'));
     }
 
