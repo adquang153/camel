@@ -1,0 +1,31 @@
+.pt-80{
+    padding-top: 80px;
+}
+.pb-80{
+    padding-bottom: 80px;
+}
+.container_camel{
+    width: 1140px;
+    margin: 0 auto;
+}
+@media(max-width: 1200px){
+    .container_camel{
+        width: 980px;
+    }
+}
+@media(max-width: 991px){
+    .container_camel{
+        width: 740px;
+    }
+}
+@media(max-width: 767px){
+    .container_camel{
+        width: 500px;
+    }
+}
+@media(max-width: 575px){
+    .container_camel{
+        width: 100%;
+        padding: 0 8px;
+    }
+}

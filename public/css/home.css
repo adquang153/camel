@@ -1,0 +1,176 @@
+
+@keyframes moveBanner{
+    0% {
+        bottom: -180px;
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+        bottom: 0px;
+    }
+}
+.banner_item.slick-slide.slick-current.slick-active .banner_title p{
+    opacity: 1;
+    visibility: visible;
+    animation: moveBanner 1s;
+}
+.banner_item.slick-slide .banner_title p{
+    opacity: 0;
+    visibility: hidden;
+}
+.banner_item{
+    position: relative;
+}
+.banner_title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,.4);
+}
+.banner_title p{
+    font-size: 50px;
+    position: relative;
+    left: 180px;
+    color: white;
+}
+.banner_item img {
+    width: 100%;
+    height: 500px;
+    object-fit:cover;
+}
+.banner > button{
+    position: absolute;
+    top: 45%;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    z-index: 2;
+    background: transparent;
+    border: transparent;
+    border-radius: 50%;
+    outline: none;
+}
+.banner > .slick-prev{
+    left: 25px;
+}
+.banner > .slick-next{
+    right: 25px;
+}
+.banner > .slick-prev:after {
+    content: '\f053';
+    font-family: fontAwesome;
+    color: white;
+    font-size: 24px;
+}
+.banner > .slick-next:after{
+    content: '\f054';
+    font-family: fontAwesome;
+    color: white;
+    font-size: 24px;
+}
+ul.slick-dots {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+}
+ul.slick-dots > li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
+ul.slick-dots > li > button{
+    font-size: 0;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    outline: none;
+}
+ul.slick-dots > li.slick-active > button{
+    background: white;
+}
+.type_parent, .type_parent .row{
+    width: 100%;
+    margin: 0;
+}
+.type_image{
+    height: 100%;
+    position: relative;
+}
+.type_image img{
+    height: 100%;
+    object-fit: cover;
+}
+.type_parent img{
+    width: 100%;
+}
+.type_parent div{
+    padding: 0;
+}
+.type_parent > div{
+    height: 700px;
+}
+.type_parent > div:first-child{
+    padding-right: .5rem;
+}
+.type_parent > div:first-child > div{
+    height: 100%;
+}
+.type_parent > div:first-child > div img{
+    height: 100%;
+    object-fit: cover;
+}
+.type_parent > div:last-child{
+    padding-left: .5rem;
+}
+.type_parent > div:last-child > .row{
+    height: 100%;
+}
+.type_parent > div:last-child > .row > div:nth-child(1){
+    height: 50%;
+}
+.type_parent > div:last-child > .row > div:nth-child(2){
+    padding-right: .5rem;
+    height: 50%;
+}
+.type_parent > div:last-child > .row > div:nth-child(3){
+    padding-left: .5rem;
+    height: 50%;
+}
+.type_content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6);
+}
+.type_content:hover{
+    text-decoration:none;
+}
+.type_content p{
+    color: #adadad;;
+    font-size: 22px;
+    margin: 20px;
+    transition: all .4s;
+}
+.type_content:hover p{
+    margin: 23px;
+    color: whitesmoke;
+}

@@ -17,7 +17,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>Content</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
             @if($data)
@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->title}}</td>
-                        <td>{{$value->content}}</td>
+                        <td><img src="{{$value->image}}" alt="image" width="60px" height="40px" style="object-fit:contain"></td>
                         <td class="action_mng">
                             <a href="{{route('admin.product_type.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
                             <form action="{{route('admin.product_type.destroy',$value->id)}}" id="deleted" method="post" class="d-inline">

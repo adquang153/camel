@@ -23,7 +23,10 @@ class ProductTypeController extends Controller
     public function index()
     {
         //
-        $data = $this->pro_type->all();
+        $params = [
+            'select' => ['id','title','image'],
+        ];
+        $data = $this->pro_type->all($params);
         return view('admin/product_type/index',compact('data'));
     }
 
@@ -48,8 +51,8 @@ class ProductTypeController extends Controller
     {
         //
         $request->validate([
-            'title'=>'required|max:50',
-            'content'=>'required'
+            'title'=>'required|max:100',
+            'image'=>'required'
         ]);
         
         $data = $this->pro_type->create($request->all());
@@ -78,7 +81,10 @@ class ProductTypeController extends Controller
     public function edit($id)
     {
         //
-        $data = $this->pro_type->get($id);
+        $params = [
+            'select' => ['id','image','title']
+        ];
+        $data = $this->pro_type->get($id,$params);
         return view('admin/product_type/updated',compact('data'));
     }
 
@@ -94,7 +100,6 @@ class ProductTypeController extends Controller
         //
         $request->validate([
             'title'=>'required|max:50',
-            'content'=>'required'
         ]);
         $result = $this->pro_type->update($id,$request->all());
         if($result)

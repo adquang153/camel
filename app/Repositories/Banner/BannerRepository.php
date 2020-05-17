@@ -11,7 +11,7 @@ class BannerRepository implements BannerRepositoryInterface
     public function get($id, $params = [])
     {
         if(isset($params['select']))
-            return BannerModel::select($params[])->find($id);
+            return BannerModel::select($params['select'])->find($id);
         return BannerModel::find($id);
     }
 
@@ -61,6 +61,14 @@ class BannerRepository implements BannerRepositoryInterface
             return $result;
         }
         return false;
+    }
+
+    public function getBannerHome($params=[],$where=[], $take=""){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        $data = BannerModel::select($select)->where($where)->take($take)->orderBy('created_at','desc')->get();
+        return $data;
     }
 }
 

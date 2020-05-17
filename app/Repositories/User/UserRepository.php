@@ -11,7 +11,7 @@ class UserRepository implements UserRepositoryInterface{
     public function get($id, $params = []){
         $data = User::find($id);
         if(isset($params['select']))
-            $data = User::select($params['select']);
+            $data = User::select($params['select'])->first();
         return $data;
     }
 
@@ -23,7 +23,13 @@ class UserRepository implements UserRepositoryInterface{
     }
 
     public function delete($id){
-
+        $result = User::select('id')->where('id',$id)->first();
+        if($result) {
+            $result->forceDelete();
+            return true;
+        }
+        return false;
+        
     }
 
     public function update($id, $data){

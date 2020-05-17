@@ -28,7 +28,10 @@ class ProductsController extends Controller
     public function index()
     {
         //
-        $data = $this->product->all();
+        $params = [
+            'select' => ['id','title','content','image_product','price','type','user_id','is_visible','created_at','updated_at'],
+        ];
+        $data = $this->product->all($params);
         return view('admin/products/index', compact('data'));
     }
 
@@ -48,7 +51,6 @@ class ProductsController extends Controller
         ];
         $user = $this->user->all($paramsUser);
         $type = $this->pro_type->all($paramsPT);
-
         return view('admin/products/created', compact('type','user'));
     }
 
@@ -90,9 +92,16 @@ class ProductsController extends Controller
     public function edit($id)
     {
         //
-        $data = $this->product->get($id);
+        $params = [
+            'select' => ['id','title','content','image_product','price','type','user_id','is_visible','created_at','updated_at'],
+        ];
+        $data = $this->product->get($id,$params);
         $type = $this->pro_type->all();
-        return view('admin/products/updated', compact(['data','type']));
+        $paramsUser = [
+            'select' => ['id','user_name','nick_name'],
+        ];
+        $user = $this->user->all($paramsUser);
+        return view('admin/products/updated', compact(['data','type','user']));
     }
 
     /**

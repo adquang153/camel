@@ -90,7 +90,10 @@ class BannerController extends Controller
     {
         //
         // $data =  Banner::find($id);
-        $data = $this->banner->get($id);
+        $params = [
+            'select' => ['id','title','image_banner','start_date','end_date','is_visible','created_at','updated_at'],
+        ];
+        $data = $this->banner->get($id,$params);
         return view('admin/banner/updated',compact('data'));
     }
 

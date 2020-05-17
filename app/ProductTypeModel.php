@@ -10,5 +10,5 @@ class ProductTypeModel extends Model
     //
     use SoftDeletes;
     protected $table = 'product_type';
-    protected $fillable = ['title','content','created_at','updated_at'];
+    protected $fillable = ['title','image','path','created_at','updated_at'];
 }

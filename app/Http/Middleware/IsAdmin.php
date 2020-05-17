@@ -18,6 +18,6 @@ class IsAdmin
         if(auth()->user()->is_admin=='Y')
             return $next($request);
 
-        return redirect('/home');
+        return redirect('/');
     }
 }

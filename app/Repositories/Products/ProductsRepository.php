@@ -8,12 +8,18 @@ use App\ProductsModel as Products;
 
 class ProductsRepository implements ProductsRepositoryInterface{
 
-    public function get($id){
-        return Products::find($id);
+    public function get($id,$params=[]){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return Products::select($select)->find($id);
     }
 
-    public function all($where=[]){
-        return Products::where($where)->orderBy('id','desc')->get();
+    public function all($params=[],$where=[]){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return Products::select($select)->where($where)->orderBy('id','desc')->get();
     }
 
     public function create($data){
@@ -50,7 +56,5 @@ class ProductsRepository implements ProductsRepositoryInterface{
         }
         return false;
     }
-
 }
-
 ?>

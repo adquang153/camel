@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('index');
 Route::group(['prefix' => '/admin','middleware'=>['auth','is_admin']], function () {
     Route::get('/', 'MyController@getConfig')->name('admin');
     Route::resource('/products', 'ProductsController',['names' => 'admin.products']);
@@ -29,4 +27,4 @@ Route::group(['prefix' => '/admin','middleware'=>['auth','is_admin']], function 
 
 Auth::routes();
  
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

@@ -92,5 +92,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $result = $this->user->delete($id);
+        return redirect('admin/user')->with('success', $result?'User Deleted!':'Can\'t Deleted!');
     }
 }

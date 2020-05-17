@@ -35,7 +35,7 @@
         </div>
         <div class="form-check">
             <input id="visible" class="form-check-input" type="checkbox" name="is_visible" value="true">
-            <label for="visible" class="form-check-label">Text</label>
+            <label for="visible" class="form-check-label">is_visible</label>
         </div>
         <button class="btn btn-success mt-3">Add</button>
     </form>
