@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css')}}">
     @section('css')
     @show
   </head>

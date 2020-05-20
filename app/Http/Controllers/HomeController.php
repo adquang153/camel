@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use App\Repositories\Banner\BannerRepositoryInterface;
 use App\Repositories\ProductType\ProductTypeRepositoryInterface;
+use App\Repositories\Products\ProductsRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,12 +17,14 @@ class HomeController extends Controller
      */
     protected $banner;
     protected $productType;
+    protected $product;
 
-    public function __construct(BannerRepositoryInterface $banner, ProductTypeRepositoryInterface $productType)
+    public function __construct(BannerRepositoryInterface $banner, ProductTypeRepositoryInterface $productType, ProductsRepositoryInterface $product)
     {
         // $this->middleware('auth');
         $this->banner = $banner;
         $this->productType = $productType;
+        $this->product = $product;
     }
 
     /**
@@ -44,4 +49,30 @@ class HomeController extends Controller
         $productType = $this->productType->getProductType($paramsPRTP,[],4);
         return view('index',compact('banner','productType'));
     }
+
+    public function ProductType($id){
+        $params = [
+            'select' => ['id','title','content','image_product','price','user_id','likes','comments'],
+            'paginate' => 2,
+        ];
+        $where = [
+            ['type',$id],
+            ['is_visible','Y'],
+        ];
+        $data = $this->product->all($params,$where);
+        $paramsTP = [
+            'select' => 'title',
+        ];
+        $title = $this->productType->get($id,$paramsTP);
+        return view('product',compact('data','title'));
+    }
+    public function ProductDetail($id){
+        $params = [
+            'select' => ['products.id','title','content','image_product','price','type','user_id','likes','comments','users.nick_name'],
+        ];
+        $data = $this->product->get($id,$params,'client');
+        return view('product_detail',compact('data'));
+    }
+
+    
 }

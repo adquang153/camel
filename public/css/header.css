@@ -1,26 +1,13 @@
-@font-face{
-    font-family: 'Nunito';
-    src: url(../font/Nunito-Regular.ttf);
-}
-@font-face{
-    font-family: 'Nunito';
-    src: url(../font/Nunito-Bold.ttf);
-    font-weight: bold;
-}
-* {
-    margin: 0;
-    padding: 0;
-}
-body *{
-    font-family: 'Nunito';
-}
+
+
 #header{
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     padding: 5px 15px;
-    background: rgba(0,0,0,.4);
-    z-index: 2;
+    background: #23292e;
+    z-index: 9;
+    box-shadow: 0 0 8px 5px rgba(0,0,0,.4);
 }
 #header a{
     color: white;
@@ -52,18 +39,46 @@ li.list-drop ul.dropdown{
     position: absolute;
     top: 10px;
     left: 15px;
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 3px;
     max-height: 0;
     opacity: 0;
     visibility: hidden;
     overflow-y: hidden;
+    background: #464646;
+    box-shadow: 0 3px 10px 0px rgba(0,0,0,.7);
     transition: all .4s;
 }
 li.list-drop:hover ul.dropdown{
-    width: 100%;
     top: 30px;
     opacity: 1;
     visibility: visible;
     max-height: 100vh;
+}
+li.list-drop ul.dropdown > li{
+    margin: 5px 0;
+}
+#header ul.head_list_first > li > ul{
+    padding-bottom: 8px;
+}
+ul.head_list_first li.list-drop ul.dropdown a{
+    position: relative;
+    display: block;
+    padding: 5px 10px;
+}
+ul.head_list_first li.list-drop ul.dropdown a:after{
+    position: absolute;
+    content: '';
+    width: 5%;
+    height: 2px;
+    bottom: 0;
+    left: 5px;
+    background: #f7f7f7;
+    transition: all .4s;
+}
+ul.head_list_first li.list-drop ul.dropdown a:hover:after{
+    width: 90%;
 }
 #header ul.head_list_first > li > a{
     padding: 10px 15px;
@@ -88,4 +103,33 @@ li.list-drop:after{
 }
 li.list-drop:hover:after{
     transform: rotate(45deg);
+}
+.head_list_second li.list-drop ul.dropdown{
+    background: #f7f7f7;
+    border: 1px solid #dfdfdf;
+    left: -10%;
+    overflow: initial;
+    width: 120%;
+}
+.head_list_second li.list-drop ul.dropdown a{
+    color: #333 !important;
+    padding: 0 10px;
+    line-height: 40px;
+}
+.nav-total{
+    position: relative;
+}
+.nav-total span.total {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
 }

@@ -1,0 +1,49 @@
+footer.footer *{
+    color: gray;
+}
+.parent_footer{
+    background: #efefef;
+}
+.parent_footer{
+    display: flex;
+}
+.parent_footer .column{
+    width: calc(100% / 3);
+    display: inline-block;
+    padding: 70px 20px;
+}
+.parent_footer .column .content{
+    text-align: center;
+}
+.column .content h6{
+    text-transform: uppercase;
+}
+ul.list_first{
+    padding: 0;
+    margin: 0;
+}
+ul.list_first li.list-item {
+    display: inline-block;
+    width: 40px;
+}
+footer.footer ul.list_first li.list-item a{
+    color: gray;
+    font-size: 22px;
+}
+.content p{
+    font-size: 12px;
+}
+input#email_footer{
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+}
+form.form_footer label{
+    background: #f7f7f7;
+    border-radius:4px;
+    padding: 5px 10px;
+}
+footer.footer .parent_footer .column:nth-child(2){
+    background: #eaeaea;
+}

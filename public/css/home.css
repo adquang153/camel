@@ -5,6 +5,11 @@
         opacity: 0;
         visibility: hidden;
     }
+    60%{
+        bottom: -180px;
+        opacity: 0;
+        visibility: hidden;
+    }
     100%{
         opacity: 1;
         visibility: visible;
@@ -89,14 +94,14 @@ ul.slick-dots > li{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     margin: 0 5px;
 }
 ul.slick-dots > li > button{
     font-size: 0;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     background: transparent;
     border: 1px solid white;
     border-radius: 50%;
@@ -104,6 +109,9 @@ ul.slick-dots > li > button{
 }
 ul.slick-dots > li.slick-active > button{
     background: white;
+}
+section.product_type{
+    background: #efefef;
 }
 .type_parent, .type_parent .row{
     width: 100%;

@@ -8,10 +8,14 @@ use App\ProductsModel as Products;
 
 class ProductsRepository implements ProductsRepositoryInterface{
 
-    public function get($id,$params=[]){
+    public function get($id,$params=[],$type=""){
         $select = '*';
         if(isset($params['select']))
             $select = $params['select'];
+        if(!$type==""){
+            $data = Products::select($select)->where('products.is_visible','Y')->where('products.id',$id)->join('users','users.id','=','products.user_id');
+            return $data->first();
+        }
         return Products::select($select)->find($id);
     }
 
@@ -19,7 +23,12 @@ class ProductsRepository implements ProductsRepositoryInterface{
         $select = '*';
         if(isset($params['select']))
             $select = $params['select'];
-        return Products::select($select)->where($where)->orderBy('id','desc')->get();
+        $data = Products::select($select)->where($where)->orderBy('id','desc');
+        if(isset($params['paginate']))
+            $data = $data->paginate($params['paginate']);
+        else
+            $data = $data->get();
+        return $data;
     }
 
     public function create($data){

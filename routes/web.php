@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('index');
+Route::get('/product_type/{id}', 'HomeController@ProductType')->name('product_type');
+Route::get('/product_detail/{id}', 'HomeController@ProductDetail')->name('product_detail');
+Route::get('cart', 'CartController@getCart')->name('get_cart')->middleware('auth');
+Route::get('cart/{id}', 'CartController@addCart')->name('add_cart')->middleware('auth');
+Route::get('cart/edit', 'CartController@editCart')->name('edit_cart')->middleware('auth');
+Route::get('cart/delete/{id}', 'CartController@deleteCart')->name('delete_cart')->middleware('auth');
+
 Route::group(['prefix' => '/admin','middleware'=>['auth','is_admin']], function () {
     Route::get('/', 'MyController@getConfig')->name('admin');
     Route::resource('/products', 'ProductsController',['names' => 'admin.products']);

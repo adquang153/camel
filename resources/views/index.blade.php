@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <div class="type_image">
                     <img src="{{$productType[0]->image}}" alt="">
-                    <a href="#" class="type_content">
+                    <a href="{{route('product_type',$productType[0]->id)}}" class="type_content">
                         <p>{{$productType[0]->title}}</p>
                     </a>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-12">
                         <div class="type_image">
                             <img src="{{$productType[1]->image}}" alt="">
-                            <a href="#" class="type_content">
+                            <a href="{{route('product_type',$productType[1]->id)}}" class="type_content">
                                 <p>{{$productType[1]->title}}</p>
                             </a>
                         </div>
@@ -46,7 +46,7 @@
                     <div class="col-md-6 pt-3">
                         <div class="type_image">
                             <img src="{{$productType[2]->image}}" alt="">
-                            <a href="#" class="type_content">
+                            <a href="{{route('product_type',$productType[2]->id)}}" class="type_content">
                                 <p> {{$productType[2]->title}}</p>
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="col-md-6 pt-3">
                         <div class="type_image">
                             <img src="{{$productType[3]->image}}" alt="">
-                            <a href="#" class="type_content">
+                            <a href="{{route('product_type',$productType[3]->id)}}" class="type_content">
                                  <p>{{$productType[3]->title}}</p>
                             </a>
                         </div>
