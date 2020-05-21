@@ -28,7 +28,10 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $data = $this->post->all();
+        $params = [
+            'select' => ['id','title','image_post','type','user_id','created_at','deleted_at'],
+        ];
+        $data = $this->post->all($params);
         return view('admin/posts/index',compact('data'));
     }
 
@@ -87,7 +90,10 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
-        $data = $this->post->get($id);
+        $params = [
+            'select' => ['id','title','image_post','type','user_id','created_at','deleted_at'],
+        ];
+        $data = $this->post->get($id,$params);
         $type = $this->postType->all();
         return view('admin/posts/updated',compact(['data','type']));
     }

@@ -30,7 +30,7 @@ class ProductTypeRepository implements ProductTypeRepositoryInterface{
     }
 
     public function delete($id){
-        $data = ProType::find($id);
+        $data = ProType::select('id')->find($id);
         if($data){
             $data->forceDelete();
             return true;

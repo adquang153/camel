@@ -90,6 +90,30 @@
         background: #333;
         text-decoration: none;
     }
+    .load{
+        width: 60px;
+        height: 3px;
+        position: relative;
+        opacity: 0;
+        left: 0%;
+        background: red;
+        transition: all .3s;
+    }
+    .load.show{
+        opacity: 1;
+        animation: load 3s infinite;
+    }
+    @keyframes load{
+        0%{
+            left: 0%;
+        }
+        50%{
+            left: calc(100% - 60px);
+        }
+        100%{
+            left: 0%;
+        }
+    }
 </style>
 @endsection
 
@@ -106,6 +130,7 @@
                 <div class="delete_all">
                     <a href="javascript:delete_item(-1)" id="delete_-1" data-url="{{route('delete_cart',-1)}}">Delete all</a>
                 </div>
+                <div class="load"></div>
                 <table class="table-hover">
                     <thead>
                         <tr>
@@ -124,12 +149,12 @@
                             <td>{{$items['id']}}</td>
                             <td class="name"><a href="{{route('product_detail',$items['id'])}}"> {{$items['title']}}</a></td>
                             <td><img src="{{$items['image_product']}}" alt="image product" style="width:80px;height:50px;object-fit:contain"></td>
-                            <td class="price">{{number_format(intval($items['price']),0,',','.')}}<sup>đ</sup></td>
+                            <td class="price"><span>{{number_format(intval($items['price']),0,',','.')}}</span><sup>đ</sup></td>
                             <td class="qty_item">
-                                <input type="number" data-total="{{$items['id']}}" min="1" value="{{$items['qty']}}">    
-                                <a href="javascript:total({{$items['id']}})">Edit</a>
+                                <input type="number" id_item="{{$items['id']}}" min="1" value="{{$items['qty']}}">    
+                                <a href="javascript:void(0)" class="edit_qty">Edit</a>
                             </td>
-                            <td class="price">{{number_format(intval($items['prices']),0,',','.')}}<sup>đ</sup></td>
+                            <td class="price prices"><span>{{number_format(intval($items['prices']),0,',','.')}}</span><sup>đ</sup></td>
                             <td>
                                 <a href="javascript:delete_item({{$items['id']}})" id="delete_{{$items['id']}}" data-url="{{route('delete_cart',$items['id'])}}">
                                     <i class="fa fa-trash"></i>
@@ -162,6 +187,39 @@
 
 @section('scripts')
 <script>
+    window.addEventListener('DOMContentLoaded',function(){
+        let list = document.querySelectorAll('.qty_item a');
+        list.forEach(item=>{
+            item.addEventListener('click',function(){
+                let url = "{{route('edit_cart')}}";
+                let input = this.parentElement.children[0];
+                let val_input = input.value;
+                let id_item = input.getAttribute('id_item');
+                let current = this;
+                $.ajax({
+                    type: 'post',
+                    url:url,
+                    dataType: 'JSON',
+                    data:{
+                        id:id_item,
+                        qty:val_input,
+                    },
+                    beforeSend: function(){
+                        document.querySelector('.load').classList.add('show');
+                    },
+                    success: function(res){
+                        document.querySelector('.total_cart').innerHTML = res.total_cart;
+                        document.querySelector('.total_price').innerHTML = res.total_price;
+                        current.parentElement.parentElement.children[5].children[0].innerHTML = res.prices;
+                        document.querySelector('.load').classList.remove('show');
+                    },
+                    error: function(err){
+                        console.log(err);
+                    },
+                });
+            })
+        })
+    });
     function total(total_id){
         // let url = "{{route('edit_cart')}}";
         // let value_input = document.querySelector('input[data-total="' + total_id + '"]').value;
@@ -173,7 +231,8 @@
         //     success: function(res){
         //         alert(res);
         //     }
-        // });
+        // });c
+        console.log()
     }
 
     function delete_item(id){

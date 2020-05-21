@@ -58,7 +58,7 @@ class ProductsRepository implements ProductsRepositoryInterface{
     }
 
     public function delete($id){
-        $result = Products::find($id);
+        $result = Products::select('id')->find($id);
         if($result){
             $result->forceDelete();
             return true;

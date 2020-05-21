@@ -4,7 +4,6 @@ namespace App\Repositories\Images;
 
 interface ImagesRepositoryInterface{
     
-    public function get($id);
 
     public function all();
 

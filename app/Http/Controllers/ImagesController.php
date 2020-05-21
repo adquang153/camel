@@ -24,7 +24,7 @@ class ImagesController extends Controller
     {
         //
         $params = [
-            'select' => ['id','image','created_at','updated_at'],
+            'select' => ['id','image','product_id','created_at','updated_at'],
         ];
         $data = $this->images->all($params);
         return view('admin/images_product/index',compact('data'));
@@ -55,7 +55,7 @@ class ImagesController extends Controller
     {
         //
         $request->validate([
-            'images' => 'required',
+            'image' => 'required',
             'product_id' => 'required'
         ]);
         $result = $this->images->create($request->all());

@@ -10,16 +10,18 @@ class BannerRepository implements BannerRepositoryInterface
 {
     public function get($id, $params = [])
     {
+        $select = '*';
         if(isset($params['select']))
-            return BannerModel::select($params['select'])->find($id);
-        return BannerModel::find($id);
+            $select = $params['select'];
+        return BannerModel::select($select)->find($id);
     }
 
     public function all($params = [])
     {
+        $select = '*';
         if(isset($params['select']))
-            return BannerModel::select($params['select'])->orderBy('id','desc')->get();
-        return BannerModel::orderBy('id','desc')->get();
+            $select = $params['select'];
+        return BannerModel::select($select)->orderBy('id','desc')->get();
     }
 
     public function create($data){
@@ -33,7 +35,7 @@ class BannerRepository implements BannerRepositoryInterface
 
     public function delete($id)
     {
-        $data = BannerModel::find($id);
+        $data = BannerModel::select('id')->find($id);
         if($data){
             $data->forceDelete();
             return true;

@@ -7,8 +7,11 @@ use App\PostTypeModel as PostType;
 
 class PostTypeRepository implements PostTypeRepositoryInterface{
 
-    public function get($id){
-        return PostType::find($id);
+    public function get($id,$params = []){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return PostType::select($select)->find($id);
     }
 
     public function all($params = []){
@@ -23,7 +26,7 @@ class PostTypeRepository implements PostTypeRepositoryInterface{
     }
 
     public function delete($id){
-        $result = PostType::find($id);
+        $result = PostType::select('id')->find($id);
         if($result){
             $result->forceDelete();
             return true;
@@ -32,7 +35,7 @@ class PostTypeRepository implements PostTypeRepositoryInterface{
     }
 
     public function update($id, $data){
-        $result = PostType::find($id);
+        $result = PostType::select('id')->find($id);
         if($result){
             $result->update($data);
             return $result;

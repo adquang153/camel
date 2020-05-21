@@ -8,15 +8,12 @@ use App\ImagesProductModel as Images;
 
 class ImagesRepository implements ImagesRepositoryInterface{
 
-    public function get($id){
-        return Images::find($id);
-    }
 
     public function all($params = [],$where=[]){
-        $data = Images::all();
+        $select = '*';        
         if(isset($params['select']))
-            $data = Images::select($params['select']);
-        $data = $data->where($where)->orderBy('id','desc')->get();
+            $select = $params['select'];
+        $data = Images::select($select)->where($where)->orderBy('id','desc')->get();
         return $data;
     }
     
@@ -30,7 +27,7 @@ class ImagesRepository implements ImagesRepositoryInterface{
     }
 
     public function delete($id){
-        $result = Images::find($id);
+        $result = Images::select('id')->find($id);
         if($result){
             Storage::delete($result->path);
             $result->delete();

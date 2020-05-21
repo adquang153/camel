@@ -8,12 +8,18 @@ use App\PostsModel as Posts;
 
 class PostsRepository implements PostsRepositoryInterface{
 
-    public function get($id){
-        return Posts::find($id);
+    public function get($id,$params =[]){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return Posts::select($select)->find($id);
     }
 
-    public function all(){
-        return Posts::orderBy('id','desc')->get();
+    public function all($params =[]){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        return Posts::select($select)->orderBy('id','desc')->get();
     }
 
     public function create($data){
@@ -43,7 +49,7 @@ class PostsRepository implements PostsRepositoryInterface{
     }
 
     public function delete($id){
-        $result = Posts::find($id);
+        $result = Posts::select('id')->find($id);
         if($result){
             $result->forceDelete();
             return true;

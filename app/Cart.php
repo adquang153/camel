@@ -53,7 +53,16 @@ class Cart{
     }
 
     public function edit($id,$qty){
-
+        $this->totalQty = 0;
+        $this->totalPrice = 0;
+        $storedItem = $this->items[$id];
+        $storedItem['qty'] = $qty;
+        $storedItem['prices'] = $qty * $storedItem['price'];
+        $this->items[$id] = $storedItem;
+        foreach($this->items as $it){
+            $this->totalQty += $it['qty'];
+            $this->totalPrice += $it['prices'];
+        }
     }
 
 }
