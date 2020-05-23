@@ -218,6 +218,22 @@ ul.nav.nav-tabs li.nav-item a.nav-link.active:after{
 .form_product button:hover{
     background: #333;
 }
+ul.pagination {
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+ul.pagination *{
+    outline: none;
+}
+ul.pagination > li > *{
+    font-size: 14px;
+    color: #333;
+}
+ul.pagination > li.active .page-link{
+    background: #333;
+    border-color: #333;
+    color: wheat;
+}
 @media(max-width: 1200px){
     li.product-item .item .item-image{
         height: 170px;

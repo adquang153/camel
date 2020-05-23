@@ -53,6 +53,7 @@ class HomeController extends Controller
     public function ProductType($id){
         $params = [
             'select' => ['id','title','content','image_product','price','user_id','likes','comments'],
+            'paginate' => 10,
         ];
         $where = [
             ['type',$id],

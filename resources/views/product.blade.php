@@ -38,6 +38,7 @@
                     @endforeach
                 </ul>
             </div>
+            {{$data->links()}}
         </div>
         <div class="col-md-3">
             @include('layouts.sidebar')
