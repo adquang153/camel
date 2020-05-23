@@ -10,6 +10,7 @@
     width: 30%;
     padding: 0 12px;
     display: inline-block;
+    margin-top: 16px;
 }
 li.product-item .item .item-image{
     width: 100%;
@@ -117,6 +118,7 @@ ul.action span:hover{
     color: #969494;
     font-size: 14px;
     border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 0;
 }
 .product_image {
     width: 30%;

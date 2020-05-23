@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{asset('css/product.css')}}">
 @endsection
 @section('content')
-<section class="product pt-80">
+<section class="product pt-80 pb-80">
     <div class="row w-100 px-4 m-0">
         <div class="col-md-9">
             <div class="title_product">
