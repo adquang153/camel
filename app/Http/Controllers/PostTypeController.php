@@ -22,8 +22,10 @@ class PostTypeController extends Controller
     public function index()
     {
         //
-        $data = $this->postType->all();
-        
+        $params = [
+            'select' => ['id','title','content','created_at'],
+        ];
+        $data = $this->postType->all($params);
         return view('admin/post_type/index',compact('data'));
     }
 

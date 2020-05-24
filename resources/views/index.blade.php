@@ -19,7 +19,7 @@
         @endforeach
     </div>
 </section>
-
+@if(count($productType)>0)
 <section class="product_type">
     <div class="p-3">
         <div class="type_parent row">
@@ -71,6 +71,7 @@
     </div>
     <!-- end padding -->
 </section>
+@endif
 
 @endsection
 

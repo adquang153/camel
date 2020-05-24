@@ -17,12 +17,13 @@ class CreateAboutUsTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->longText('content');
+            $table->longText('image');
+            $table->longText('path');
             $table->string('is_visible', 1)->default('N');
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
     /**
      * Reverse the migrations.
      *

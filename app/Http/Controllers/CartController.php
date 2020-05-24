@@ -43,7 +43,6 @@ class CartController extends Controller
         $count = count($cart->items);
         return json_encode(['id'=>$id,'total_cart'=>$cart->totalQty,'total_price'=>$cart->totalPrice,'count'=>$count]);
     }
-
     public function editCart(Request $request){
         $cart = Session::has('cart') ? Session::get('cart') : null;
         if($cart){
@@ -52,7 +51,6 @@ class CartController extends Controller
         Session::put('cart',$cart);
         return json_encode(array_merge($cart->items[$request->id],['total_cart'=>$cart->totalQty,'total_price'=>$cart->totalPrice]));
     }
-
     public function getCart(){
         return view('/cart');
     }

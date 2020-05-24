@@ -144,9 +144,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($cart->items as $items)
+                    @foreach($cart->items as $index=>$items)
                         <tr id="cart_{{$items['id']}}">
-                            <td>{{$items['id']}}</td>
+                            <td>{{$index}}</td>
                             <td class="name"><a href="{{route('product_detail',$items['id'])}}"> {{$items['title']}}</a></td>
                             <td><img src="{{$items['image_product']}}" alt="image product" style="width:80px;height:50px;object-fit:contain"></td>
                             <td class="price"><span>{{number_format(intval($items['price']),0,',','.')}}</span><sup>đ</sup></td>
@@ -242,6 +242,9 @@
             url: url,
             data:{},
             dataType:'JSON',
+            beforeSend: function(){
+                document.querySelector('.load').classList.add('show');
+            },
             success:function(res){
                 document.querySelector('.total').innerHTML = res.count;
                 if(res.count == 0){

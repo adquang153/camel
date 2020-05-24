@@ -22,6 +22,7 @@ Route::get('cart/delete/{id}', 'CartController@deleteCart')->name('delete_cart')
 
 Route::group(['prefix' => '/admin','middleware'=>['auth','is_admin']], function () {
     Route::get('/', 'MyController@getConfig')->name('admin');
+    Route::resource('/about_us', 'AboutUsController',['names' => 'admin.about_us']);
     Route::resource('/products', 'ProductsController',['names' => 'admin.products']);
     Route::resource('/product_type', 'ProductTypeController',['names' => 'admin.product_type']);
     Route::resource('/banner', 'BannerController',['names' => 'admin.banner']);

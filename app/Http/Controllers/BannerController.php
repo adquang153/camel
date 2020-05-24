@@ -126,7 +126,7 @@ class BannerController extends Controller
         $data = $this->banner->delete($id);
         $success = "Banner Deleted!";
         if(!$data)
-            $success = "Can't deleted!";
+            $success = "Can't Deleted!";
         return redirect('admin/banner')->with('success',$success);
     }
 }

@@ -7,6 +7,11 @@ return [
         'route' => 'admin',
     ],
     [
+        'name' => 'About Us',
+        'icon' => 'fab fa-pushed',
+        'route' => 'admin.about_us.index',
+    ],
+    [
         'name' => 'Banner',
         'icon' => 'fab fa-bimobject',
         'route' => 'admin.banner.index',

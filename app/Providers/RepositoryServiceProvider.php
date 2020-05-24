@@ -17,6 +17,8 @@ use App\Repositories\Images\ImagesRepositoryInterface;
 use App\Repositories\Images\ImagesRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\User\UserRepository;
+use App\Repositories\AboutUs\AboutUsRepository;
+use App\Repositories\AboutUs\AboutUsRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -48,6 +50,9 @@ class RepositoryServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             UserRepositoryInterface::class, UserRepository::class
+        );
+        $this->app->bind(
+            AboutUsRepositoryInterface::class, AboutUsRepository::class
         );
     }
 

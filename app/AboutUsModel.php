@@ -11,5 +11,5 @@ class AboutUsModel extends Model
     use SoftDeletes;
     
     protected $table = 'about_us';
-    protected $fillable = ['title','content','is_visible','created_at','updated_at'];
+    protected $fillable = ['title','content','image','path','is_visible','created_at','updated_at'];
 }

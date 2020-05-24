@@ -6,9 +6,13 @@
     padding: 0;
     margin: 0;
 }
+.product-parent ul.list-product{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .list-product li.product-item{
-    width: 30%;
-    padding: 0 12px;
+    width: 32%;
     display: inline-block;
     margin-top: 16px;
 }

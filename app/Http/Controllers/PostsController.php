@@ -29,7 +29,7 @@ class PostsController extends Controller
     {
         //
         $params = [
-            'select' => ['id','title','image_post','type','user_id','created_at','deleted_at'],
+            'select' => ['id','title','image_post','type','user_id','is_visible','content','created_at','deleted_at'],
         ];
         $data = $this->post->all($params);
         return view('admin/posts/index',compact('data'));
