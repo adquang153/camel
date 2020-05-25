@@ -11,7 +11,7 @@
                 <h2>{{$title->title}}</h2>
             </div>
             <div class="total">
-                <p>Show all {{$data->total()}} Result</p>
+                <p>Show {{ count($data) . ' / ' . $data->total()}} Result</p>
             </div>
             <div class="product-parent">
                 <ul class="list-product">

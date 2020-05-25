@@ -44,7 +44,7 @@
             </li>
             <li class="list-drop">
                 <a id="navbarDropdown" href="#">
-                    {{ Auth::user()->nick_name }} <span class="caret"></span>
+                    <img src="{{Auth::user()->avatar}}" alt=""> {{ Auth::user()->nick_name }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown">
                     <a class="" href="{{ route('logout') }}"

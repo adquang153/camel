@@ -20,8 +20,13 @@
     </div>
 </section>
 @if(count($productType)>0)
-<section class="product_type">
+<section class="product_type pt-80">
     <div class="p-3">
+        <div class="row">
+            <h1 class="title mb-5">
+                New Arrivals
+            </h1>
+        </div>
         <div class="type_parent row">
             <div class="col-md-6">
                 <div class="type_image">

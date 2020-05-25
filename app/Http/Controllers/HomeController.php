@@ -74,5 +74,8 @@ class HomeController extends Controller
         return view('product_detail',compact('data'));
     }
 
-    
+    public function GetUser(){
+        $user = Auth::user();
+        return view('profile',compact('user'));
+    }
 }

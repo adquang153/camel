@@ -133,3 +133,10 @@ li.list-drop:hover:after{
     color: white;
     font-size: 10px;
 }
+#navbarDropdown img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+}

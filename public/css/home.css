@@ -182,3 +182,7 @@ section.product_type{
     margin: 23px;
     color: whitesmoke;
 }
+.product_type .title{
+    text-align: center;
+    width: 100%;
+}
