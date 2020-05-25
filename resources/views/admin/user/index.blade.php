@@ -36,10 +36,10 @@
                         <td>{{$user->address}}</td>
                         <td class="action_mng">
                             <a href="{{route('admin.user.edit',$user->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('admin.user.destroy',$user->id)}}" id="deleted" method="post" class="d-inline">
+                            <form action="{{route('admin.user.destroy',$user->id)}}" id="deleted_{{$user->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>
+                                <a href="javascript:document.getElementById('deleted_{{$user->id}}').submit()"><i class="fa fa-trash"></i></a>
                             </form>
                         </td>
                     </tr>

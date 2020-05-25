@@ -47,7 +47,7 @@ class PostsController extends Controller
             'select' => ['id','title'],
         ];
         $paramsUser = [
-            'select' => ['id','user_name','nick_name'],
+            'select' => ['id','nick_name'],
         ];
         $type = $this->postType->all($paramsPT);
         $user = $this->user->all($paramsUser);
@@ -95,7 +95,11 @@ class PostsController extends Controller
         ];
         $data = $this->post->get($id,$params);
         $type = $this->postType->all();
-        return view('admin/posts/updated',compact(['data','type']));
+        $paramsUser = [
+            'select' => ['id','nick_name'],
+        ];
+        $user = $this->user->all($paramsUser);
+        return view('admin/posts/updated',compact(['data','type','user']));
     }
 
     /**

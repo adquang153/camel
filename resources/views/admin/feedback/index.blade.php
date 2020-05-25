@@ -30,10 +30,10 @@
                         <td>{{$feedback->user_id}}</td>
                         <td>{{$feedback->is_visible}}</td>
                         <td class="action_mng">
-                            <form action="{{route('admin.feedback.destroy',$feedback->id)}}" id="deleted" method="post" class="d-inline">
+                            <form action="{{route('admin.feedback.destroy',$feedback->id)}}" id="deleted_{{$feedback->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>
+                                <a href="javascript:document.getElementById('deleted_{{$feedback->id}}').submit()"><i class="fa fa-trash"></i></a>
                             </form>
                         </td>
                     </tr>

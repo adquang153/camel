@@ -38,7 +38,7 @@
         <div class="form-group">
           <select name="user_id" id="" class="form-control">
             @foreach($user as $us)
-              <option value="{{$us->id}}">{{$us->id . ' - ' . $us->user_name}}</option>
+              <option value="{{$us->id}}">{{$us->id . ' - ' . $us->nick_name}}</option>
             @endforeach
           </select>
         </div>

@@ -25,13 +25,13 @@
                     <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->title}}</td>
-                        <td><img src="{{$value->image}}" alt="image" width="60px" height="40px" style="object-fit:contain"></td>
+                        <td><img src="{{asset($value->image)}}" alt="image" width="60px" height="40px" style="object-fit:contain"></td>
                         <td class="action_mng">
                             <a href="{{route('admin.product_type.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('admin.product_type.destroy',$value->id)}}" id="deleted" method="post" class="d-inline">
+                            <form action="{{route('admin.product_type.destroy',$value->id)}}" id="deleted_{{$value->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>
+                                <a href="javascript:document.getElementById('deleted_{{$value->id}}').submit()"><i class="fa fa-trash"></i></a>
                             </form>
                         </td>
                     </tr>

@@ -29,10 +29,10 @@
                         </td>
                         <td>{{$img->product_id}}</td>
                         <td class="action_mng">
-                            <form action="{{route('admin.images.destroy',$img->id)}}" id="deleted" method="post" class="d-inline">
+                            <form action="{{route('admin.images.destroy',$img->id)}}" id="deleted_{{$img->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>
+                                <a href="javascript:document.getElementById('deleted_{{$img->id}}').submit()"><i class="fa fa-trash"></i></a>
                             </form>
                         </td>
                     </tr>

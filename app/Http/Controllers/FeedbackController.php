@@ -92,11 +92,10 @@ class FeedbackController extends Controller
     public function destroy($id)
     {
         //
-        // $result = $this->feedback->delete($id);
-        // $success = "Feedback Deleted!";
-        // if(!$result)
-        //     $success = "Can't Deleted!";
-        // return redirect('admin/feedback')->with('success',$success);
-        echo $id;
+        $result = $this->feedback->delete($id);
+        $success = "Feedback Deleted!";
+        if(!$result)
+            $success = "Can't Deleted!";
+        return redirect('admin/feedback')->with('success',$success);
     }
 }

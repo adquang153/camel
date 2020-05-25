@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>
-                        <td>{{$post->content}}</td>
+                        <td>{{strlen($post->content)>20? substr($post->content,0,20).'...' : $post->content}}</td>
                         <td>
                             <img src="{{asset($post->image_post)}}" alt="" style="width: 60px; height: 40px; object-fit:contain;">
                         </td>
@@ -38,10 +38,10 @@
                         <td>{{$post->is_visible}}</td>
                         <td class="action_mng">
                             <a href="{{route('admin.posts.edit',$post->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('admin.posts.destroy',$post->id)}}" id="deleted" method="post" class="d-inline">
+                            <form action="{{route('admin.posts.destroy',$post->id)}}" id="deleted_{{$post->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <a href="javascript:document.getElementById('deleted').submit()"><i class="fa fa-trash"></i></a>
+                                <a href="javascript:document.getElementById('deleted_{{$post->id}}').submit()"><i class="fa fa-trash"></i></a>
                             </form>
                         </td>
                     </tr>

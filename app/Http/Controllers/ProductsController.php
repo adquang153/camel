@@ -47,7 +47,7 @@ class ProductsController extends Controller
             'select' => ['id','title'],
         ];
         $paramsUser = [
-            'select' => ['id','user_name','nick_name'],
+            'select' => ['id','nick_name'],
         ];
         $user = $this->user->all($paramsUser);
         $type = $this->pro_type->all($paramsPT);
@@ -98,7 +98,7 @@ class ProductsController extends Controller
         $data = $this->product->get($id,$params);
         $type = $this->pro_type->all();
         $paramsUser = [
-            'select' => ['id','user_name','nick_name'],
+            'select' => ['id','nick_name'],
         ];
         $user = $this->user->all($paramsUser);
         return view('admin/products/updated', compact(['data','type','user']));
