@@ -246,6 +246,7 @@
                 document.querySelector('.load').classList.add('show');
             },
             success:function(res){
+                document.querySelector('.load').classList.remove('show');
                 document.querySelector('.total').innerHTML = res.count;
                 if(res.count == 0){
                     document.querySelector('.cart_content').innerHTML = '<h4> Cart is empty </h4>';

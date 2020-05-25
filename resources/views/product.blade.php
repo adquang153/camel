@@ -19,7 +19,7 @@
                     <li class="product-item">
                         <div class="item">
                             <div class="item-image">
-                                <img src="{{$item->image_product}}" alt="">
+                                <img src="{{asset($item->image_product)}}" alt="">
                                 <div class="link">
                                     <a href="{{route('product_detail',$item->id)}}">Detail</a>
                                 </div>
