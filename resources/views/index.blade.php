@@ -19,14 +19,15 @@
         @endforeach
     </div>
 </section>
-@if(count($productType)>0)
-<section class="product_type pt-80">
+
+<section class="product_type pt-80 pb-80">
     <div class="p-3">
         <div class="row">
             <h1 class="title mb-5">
-                New Arrivals
+                {{__('New Arrivals')}}
             </h1>
         </div>
+        @if(count($productType)>0)
         <div class="type_parent row">
             <div class="col-md-6">
                 <div class="type_image">
@@ -73,10 +74,51 @@
             <!-- end col -->
         </div>
         <!-- end type_parent row -->
+        @endif
     </div>
     <!-- end padding -->
 </section>
-@endif
+
+<section class="section_about pt-80 pb-80">
+    <div class="p-3">
+        <div class="row">
+            <h1 class="title mb-4">
+                {{__('Welcome to ')}} {{config('app.name', 'Laravel')}}
+            </h1>
+        </div>
+        @if(count($aboutUs)>0)
+        <div class="row">
+            @foreach($aboutUs as $item)
+                <div class="col-md-4">
+                    <div class="about_item">
+                        <div class="about_image">
+                            <img src="{{asset($item->image)}}" alt="image about">
+                        </div>
+                        <div class="about_content">
+                            <p>
+                                {!!$item->content!!}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        @endif
+    </div>
+</section>
+
+<section class="section_feedback">
+    <div class="p-3">
+        <div class="row">
+            <h1 class="title mb-5">
+                {{__('What Our Buyers Have To Say')}}
+            </h1>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</section>
 
 @endsection
 

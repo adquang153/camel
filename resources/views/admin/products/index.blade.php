@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>{{$product->title}}</td>
-                        <td>{{$product->content}}</td>
+                        <td>{{strlen($product->content)>20? substr($product->content,0,20).'...' : $product->content}}</td>
                         <td>
                             <img src="{{asset($product->image_product)}}" alt="" style="width: 60px; height: 40px; object-fit:contain;">
                         </td>

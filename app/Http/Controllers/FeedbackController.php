@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\FeedbackModel as Feedback;
+use App\Repositories\Feedback\FeedbackRepositoryInterface;
+
 class FeedbackController extends Controller
 {
+
+    protected $feedback;
+
+    public function __construct(FeedbackRepositoryInterface $feedback){
+        $this->feedback = $feedback;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,11 @@ class FeedbackController extends Controller
     public function index()
     {
         //
-        return view('admin/feedback/index');
+        $params = [
+            'select' => ['id','title','content','user_id','is_visible'],
+        ];
+        $data = $this->feedback->all($params);
+        return view('admin/feedback/index',compact('data'));
     }
 
     /**
@@ -81,5 +92,11 @@ class FeedbackController extends Controller
     public function destroy($id)
     {
         //
+        // $result = $this->feedback->delete($id);
+        // $success = "Feedback Deleted!";
+        // if(!$result)
+        //     $success = "Can't Deleted!";
+        // return redirect('admin/feedback')->with('success',$success);
+        echo $id;
     }
 }

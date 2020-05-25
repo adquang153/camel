@@ -182,7 +182,20 @@ section.product_type{
     margin: 23px;
     color: whitesmoke;
 }
-.product_type .title{
+.title{
     text-align: center;
     width: 100%;
+}
+.about_item {
+    margin: 14px 0;
+}
+.about_image img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.about_content p{
+    font-size: 14px;
+    color: #888;
 }

@@ -25,7 +25,7 @@ class AllTable extends Seeder
             'is_visible' => 'Y',
             'created_at' => Date('Y-m-d H:i:s'),
         ]);
-        for($i = 1; $i<6; $i++){
+        for($i = 1; $i<=6; $i++){
             
             DB::table('banner')->insert([
                 'title' => 'title '.$i,
@@ -44,7 +44,7 @@ class AllTable extends Seeder
             ]);
             DB::table('products')->insert([
                 'title' => 'Máy ảnh '.$i,
-                'content' => Str::random(100),
+                'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum nisi consequuntur vero. Repudiandae, culpa inventore maiores aliquid debitis consectetur fugit accusantium ullam quo consequuntur porro eius, architecto autem? Illum, voluptatibus.',
                 'image_product' => 'images/came'.$i.'.jpg',
                 'path' => 'images/came'.$i.'.jpg',
                 'price' => $i*20,
@@ -56,18 +56,32 @@ class AllTable extends Seeder
             ]);
             DB::table('post_type')->insert([
                 'title' => 'Loại '.$i,
-                'content' => Str::random(100),
+                'content' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid atque omnis, perspiciatis corrupti voluptatum ullam dolores optio reprehenderit reiciendis expedita labore voluptates iusto soluta harum natus obcaecati excepturi animi commodi!',
                 'created_at' => Date('Y-m-d H:i:s'),
             ]);
             DB::table('posts')->insert([
                 'title' => 'Post '.$i,
-                'content' => Str::random(100),
+                'content' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid atque omnis, perspiciatis corrupti voluptatum ullam dolores optio reprehenderit reiciendis expedita labore voluptates iusto soluta harum natus obcaecati excepturi animi commodi!',
                 'image_post' => 'images/post'.$i.'.jpg',
                 'path' => 'images/post'.$i.'.jpg',
                 'type' => $i,
                 'user_id' => '1',
                 'is_visible'=> 'Y',
                 'created_at' => Date('Y-m-d H:i:s'),
+            ]);
+            DB::table('feedback')->insert([
+                'title' => 'Feedback '.$i,
+                'content' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid atque omnis, perspiciatis corrupti voluptatum ullam dolores optio reprehenderit reiciendis expedita labore voluptates iusto soluta harum natus obcaecati excepturi animi commodi!',
+                'user_id' => '1',
+                'is_visible' => 'Y',
+                'created_at' => Date('Y-m-d H:i:s'),
+            ]);
+            DB::table('about_us')->insert([
+                'title' => 'About '.$i,
+                'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur quasi atque at, labore laborum quidem tempore. Et repellat perspiciatis voluptate eaque consequuntur blanditiis. Quae, recusandae. Saepe officiis sunt sed!',
+                'image' => 'images/about'.$i.'.png',
+                'path' => 'images/about'.$i,
+                'is_visible' => 'Y',
             ]);
         }
     }

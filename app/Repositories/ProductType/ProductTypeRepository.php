@@ -54,7 +54,7 @@ class ProductTypeRepository implements ProductTypeRepositoryInterface{
         return false;
     }
 
-    public function getProductType($params=[],$where=[],$take){
+    public function getProductType($params=[],$where=[],$take=1){
         $select = '*';
         if(isset($params['select']))
             $select = $params['select'];

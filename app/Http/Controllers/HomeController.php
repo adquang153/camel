@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Repositories\Banner\BannerRepositoryInterface;
 use App\Repositories\ProductType\ProductTypeRepositoryInterface;
 use App\Repositories\Products\ProductsRepositoryInterface;
+use App\Repositories\AboutUs\AboutUsRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,15 @@ class HomeController extends Controller
     protected $banner;
     protected $productType;
     protected $product;
+    protected $aboutUs;
 
-    public function __construct(BannerRepositoryInterface $banner, ProductTypeRepositoryInterface $productType, ProductsRepositoryInterface $product)
+    public function __construct(BannerRepositoryInterface $banner, ProductTypeRepositoryInterface $productType, ProductsRepositoryInterface $product, AboutUsRepositoryInterface $aboutUs)
     {
         // $this->middleware('auth');
         $this->banner = $banner;
         $this->productType = $productType;
         $this->product = $product;
+        $this->aboutUs = $aboutUs;
     }
 
     /**
@@ -44,10 +47,17 @@ class HomeController extends Controller
         ];
         $paramsPRTP = [
             'select' => ['id','title','image'],
+        ];
+        $paramsAB = [
+            'select' => ['id','title','content','image'],
         ];  
+        $whereAB = [
+            ['is_visible','Y'],
+        ];
         $banner = $this->banner->getBannerHome($paramsBN,$whereBN,3);
         $productType = $this->productType->getProductType($paramsPRTP,[],4);
-        return view('index',compact('banner','productType'));
+        $aboutUs = $this->aboutUs->getAboutHome($paramsAB,$whereAB,6);
+        return view('index',compact('banner','productType','aboutUs'));
     }
 
     public function ProductType($id){

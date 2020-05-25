@@ -123,10 +123,11 @@ class BannerController extends Controller
     public function destroy($id)
     {
         //
-        $data = $this->banner->delete($id);
-        $success = "Banner Deleted!";
-        if(!$data)
-            $success = "Can't Deleted!";
-        return redirect('admin/banner')->with('success',$success);
+        // $data = $this->banner->delete($id);
+        // $success = "Banner Deleted!";
+        // if(!$data)
+        //     $success = "Can't Deleted!";
+        // return redirect('admin/banner')->with('success',$success);
+        
     }
 }

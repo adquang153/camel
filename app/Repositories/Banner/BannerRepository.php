@@ -65,7 +65,7 @@ class BannerRepository implements BannerRepositoryInterface
         return false;
     }
 
-    public function getBannerHome($params=[],$where=[], $take=""){
+    public function getBannerHome($params=[],$where=[], $take=1){
         $select = '*';
         if(isset($params['select']))
             $select = $params['select'];

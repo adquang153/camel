@@ -67,6 +67,14 @@ class AboutUsRepository implements AboutUsRepositoryInterface{
         return false;
     }
 
+
+    public function getAboutHome($params=[],$where=[],$take=1){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        $data = AboutUs::select($select)->where($where)->take($take)->orderBy('id','desc')->get();
+        return $data;
+    }
 }
 
 ?>
