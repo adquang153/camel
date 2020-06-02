@@ -15,11 +15,10 @@ class AllTable extends Seeder
     {
         //
         DB::table('users')->insert([
-            'id' => '1',
             'nick_name' => 'Test User',
             'avatar' => 'images/user.png',
             'path' => 'images/user.png',
-            'email' => 'super@gmail.com',
+            'email' => 'test@gmail.com',
             'password' => Hash::make('123123123'),
             'is_admin' => 'Y',
             'is_visible' => 'Y',
