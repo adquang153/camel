@@ -28,7 +28,7 @@
                 {{__('New Arrivals')}}
             </h1>
         </div>
-        @if(count($productType)>0)
+        @if(count($productType)>=4)
         <div class="type_parent row">
             <div class="col-md-6">
                 <div class="type_image">
