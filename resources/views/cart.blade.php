@@ -208,6 +208,7 @@
                         document.querySelector('.load').classList.add('show');
                     },
                     success: function(res){
+                        document.querySelector('.total').innerHTML = res.total_cart;
                         document.querySelector('.total_cart').innerHTML = res.total_cart;
                         document.querySelector('.total_price').innerHTML = res.total_price;
                         current.parentElement.parentElement.children[5].children[0].innerHTML = res.prices;
@@ -254,7 +255,6 @@
                     document.querySelector('#cart_'+ res.id).remove();
                     document.querySelector('.total_cart').innerHTML = res.total_cart;
                     document.querySelector('.total_price').innerHTML = res.total_price;
-                    document.querySelector('.total').innerHTML = res.count;
                 }
             },
             error:function(err){
