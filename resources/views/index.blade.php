@@ -7,6 +7,7 @@
 
 @section('content')
 
+@if(count($banner)>0)
 <section class="section_banner">
     <div class="banner">
         @foreach($banner as $ban)
@@ -19,7 +20,7 @@
         @endforeach
     </div>
 </section>
-
+@endif
 <section class="product_type pt-80 pb-80">
     <div class="p-3">
         <div class="row">
