@@ -16,7 +16,6 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <th>User name</th>
                 <th>Nick name</th>
                 <th>Avatar</th>
                 <th>email</th>
@@ -28,9 +27,8 @@
                 @foreach($data as $user)
                     <tr>
                         <td>{{$user->id}}</td>
-                        <td>{{$user->user_name}}</td>
                         <td>{{$user->nick_name}}</td>
-                        <td>{{$user->avatar}}</td>
+                        <td><img src="{{asset($user->avatar)}}" alt="avatar user" style="width: 30px;height:30px;object-fit:cover;object-position: center center; border-radius: 50%;"></td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->number_phone}}</td>
                         <td>{{$user->address}}</td>

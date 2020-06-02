@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         //
         $params = [
-            'select' => ['id','user_name','password','nick_name','avatar','email','number_phone','address','created_at','updated_at'],
+            'select' => ['id','password','nick_name','avatar','email','number_phone','address','created_at','updated_at'],
         ];
         $data = $this->user->all($params);
         return view('admin/user/index',compact('data'));
